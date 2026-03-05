@@ -2,6 +2,9 @@
 
 macOS Quick Look extension for previewing `.glb` (glTF Binary) files. Press spacebar on any `.glb` file in Finder to get an interactive 3D preview with orbit, pan and zoom.
 
+![Finder preview of a shoe model](screenshots/finder-preview.png)
+![Animation controls with scrubber](screenshots/animation-controls.png)
+
 ## Features
 
 - Spacebar preview of `.glb` files in Finder
