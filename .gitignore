@@ -1,0 +1,18 @@
+# Xcode
+GLBPreview.xcodeproj/
+xcuserdata/
+*.xcworkspace
+DerivedData/
+build/
+
+# Generated plists (xcodegen recreates these)
+PreviewExtension/Info.plist
+ThumbnailExtension/Info.plist
+GLBPreview/Info.plist
+
+# Entitlements (xcodegen recreates these)
+PreviewExtension/PreviewExtension.entitlements
+ThumbnailExtension/ThumbnailExtension.entitlements
+
+# macOS
+.DS_Store

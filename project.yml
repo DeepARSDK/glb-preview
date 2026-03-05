@@ -1,0 +1,112 @@
+name: GLBPreview
+options:
+  bundleIdPrefix: com.laurie
+  deploymentTarget:
+    macOS: "13.0"
+  xcodeVersion: "15.0"
+
+schemes:
+  GLBPreview:
+    build:
+      targets:
+        GLBPreview: all
+    run:
+      config: Debug
+
+packages:
+  GLTFKit2:
+    url: https://github.com/warrenm/GLTFKit2
+    from: "0.5.0"
+
+targets:
+  GLBPreview:
+    type: application
+    platform: macOS
+    sources: [GLBPreview]
+    info:
+      path: GLBPreview/Info.plist
+      properties:
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: GL Transmission Format Binary
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Default
+            LSItemContentTypes:
+              - org.khronos.glb
+        NSMainStoryboardFile: ""
+        NSPrincipalClass: NSApplication
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.laurie.GLBPreview
+        MARKETING_VERSION: "1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 6XPHVL44C5
+    dependencies:
+      - target: PreviewExtension
+        embed: true
+      - target: ThumbnailExtension
+        embed: true
+      - package: GLTFKit2
+
+  PreviewExtension:
+    type: app-extension
+    platform: macOS
+    sources:
+      - path: PreviewExtension
+        includes:
+          - "*.swift"
+          - "*.html"
+          - "*.js"
+    entitlements:
+      path: PreviewExtension/PreviewExtension.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+        com.apple.security.network.client: true
+    info:
+      path: PreviewExtension/Info.plist
+      properties:
+        CFBundleDisplayName: GLB Preview
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.quicklook.preview
+          NSExtensionPrincipalClass: "$(PRODUCT_MODULE_NAME).PreviewViewController"
+          NSExtensionAttributes:
+            QLSupportedContentTypes:
+              - org.khronos.glb
+            QLSupportsSearchableItems: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.laurie.GLBPreview.PreviewExtension
+        GENERATE_INFOPLIST_FILE: NO
+        SKIP_INSTALL: YES
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 6XPHVL44C5
+
+  ThumbnailExtension:
+    type: app-extension
+    platform: macOS
+    sources: [ThumbnailExtension]
+    entitlements:
+      path: ThumbnailExtension/ThumbnailExtension.entitlements
+      properties:
+        com.apple.security.app-sandbox: true
+    info:
+      path: ThumbnailExtension/Info.plist
+      properties:
+        CFBundleDisplayName: GLB Thumbnail
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.quicklook.thumbnail
+          NSExtensionPrincipalClass: "$(PRODUCT_MODULE_NAME).ThumbnailProvider"
+          NSExtensionAttributes:
+            QLSupportedContentTypes:
+              - org.khronos.glb
+            QLSupportsSearchableItems: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.laurie.GLBPreview.ThumbnailExtension
+        GENERATE_INFOPLIST_FILE: NO
+        SKIP_INSTALL: YES
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: 6XPHVL44C5
+    dependencies:
+      - package: GLTFKit2
