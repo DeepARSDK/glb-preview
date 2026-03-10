@@ -21,8 +21,12 @@ macOS Quick Look extension for previewing `.glb` (glTF Binary) files. Press spac
 
 1. Download [`GLBPreview.zip` from the latest release](https://github.com/DeepARSDK/glb-preview/releases/latest)
 2. Unzip and drag `GLBPreview.app` to `/Applications`
-3. Right-click the app > **Open** (first time only, to bypass Gatekeeper for unsigned apps)
-4. The app registers the Quick Look extensions on first launch — you're done
+3. Right-click the app > **Open**
+4. macOS will show a warning that it cannot verify the app. Click **OK**, then go to **System Settings > Privacy & Security** and click **Open Anyway**:
+
+![Gatekeeper prompt in Privacy & Security settings](screenshots/gatekeeper.png)
+
+5. The app registers the Quick Look extensions on first launch — you're done
 
 ## Requirements
 
