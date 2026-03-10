@@ -17,13 +17,20 @@ macOS Quick Look extension for previewing `.glb` (glTF Binary) files. Press spac
 - Thumbnail generation for Finder icons
 - Fully offline (no network required)
 
+## Install (pre-built)
+
+1. Download [`GLBPreview.zip` from the latest release](https://github.com/DeepARSDK/glb-preview/releases/latest)
+2. Unzip and drag `GLBPreview.app` to `/Applications`
+3. Right-click the app > **Open** (first time only, to bypass Gatekeeper for unsigned apps)
+4. The app registers the Quick Look extensions on first launch — you're done
+
 ## Requirements
 
 - macOS 13.0+
-- Xcode 15+ (to build)
-- [XcodeGen](https://github.com/yonaskolb/XcodeGen) (to generate the Xcode project)
 
-## Build and install
+## Build from source
+
+If you prefer to build from source:
 
 ```bash
 # Install XcodeGen if you don't have it
